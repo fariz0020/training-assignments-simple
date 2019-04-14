@@ -1,8 +1,12 @@
 package eu.sig.training.ch05.buildandsendmail;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class BuildAndSendMail {
+
+    private Map<String, String> stringMap;
+
     // tag::buildAndSendMail[]
     public void buildAndSendMail(MailMan m, Map<String, String> strings, MailFont font) {
         // Format the email address
@@ -12,7 +16,10 @@ public class BuildAndSendMail {
         MailMessage mMessage = formatMessage(font,
             strings.get("message1") + strings.get("message2") + strings.get("message3"));
         // Send message
-        m.send(mId, strings.get("subject"), mMessage);
+        stringMap = new HashMap<>();
+        stringMap.put("mId", mId);
+        stringMap.put("subject", strings.get("subject"));
+        m.send(stringMap, mMessage);
     }
     // end::buildAndSendMail[]
 
@@ -24,7 +31,7 @@ public class BuildAndSendMail {
     private class MailMan {
 
         @SuppressWarnings("unused")
-        public void send(String mId, String subject, MailMessage mMessage) {}
+        public void send(Map<String, String> stringMap, MailMessage mMessage) {}
 
     }
 
