@@ -1,18 +1,18 @@
 package eu.sig.training.ch05.buildandsendmail;
 
+import java.util.Map;
+
 public class BuildAndSendMail {
     // tag::buildAndSendMail[]
-    public void buildAndSendMail(MailMan m, String firstName, String lastName,
-        String division, String subject, MailFont font, String message1,
-        String message2, String message3) {
+    public void buildAndSendMail(MailMan m, Map<String, String> strings, MailFont font) {
         // Format the email address
-        String mId = firstName.charAt(0) + "." + lastName.substring(0, 7) + "@"
-            + division.substring(0, 5) + ".compa.ny";
+        String mId = strings.get("firstName").charAt(0) + "." + strings.get("lastName").substring(0, 7) + "@"
+            + strings.get("division").substring(0, 5) + ".compa.ny";
         // Format the message given the content type and raw message
         MailMessage mMessage = formatMessage(font,
-            message1 + message2 + message3);
+            strings.get("message1") + strings.get("message2") + strings.get("message3"));
         // Send message
-        m.send(mId, subject, mMessage);
+        m.send(mId, strings.get("subject"), mMessage);
     }
     // end::buildAndSendMail[]
 
