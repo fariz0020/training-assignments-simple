@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // tag::CheckingAccount[]
-public class CheckingAccount implements Account {
+public class CheckingAccount extends Account {
     private static final float INTEREST_PERCENTAGE = 0.01f;
     private Money balance = new Money();
     private int transferLimit = 100;
@@ -27,16 +27,7 @@ public class CheckingAccount implements Account {
         }
     }
 
-    public Integer iterateCounterAccount(String counterAccount) {
-        int sum = 0;
-        for (int i = 0; i < counterAccount.length(); i++) {
-            char character = counterAccount.charAt(i);
-            int characterValue = Character.getNumericValue(character);
-            sum = sum + (9 - i) * characterValue;
-        }
-        return sum;
-    }
-
+    @Override
     public void addInterest() {
         Money interest = balance.multiply(INTEREST_PERCENTAGE);
         if (interest.greaterThan(0)) {
