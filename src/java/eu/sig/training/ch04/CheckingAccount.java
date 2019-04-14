@@ -3,7 +3,6 @@ package eu.sig.training.ch04;
 import java.util.HashMap;
 import java.util.Map;
 
-// tag::CheckingAccount[]
 public class CheckingAccount extends Account {
     private static final float INTEREST_PERCENTAGE = 0.01f;
     private Money balance = new Money();
@@ -11,7 +10,7 @@ public class CheckingAccount extends Account {
     private Map<String, Account> checkingAccounts;
 
     public Transfer makeTransfer(String counterAccount, Money amount)
-        throws BusinessException {
+            throws BusinessException {
         if (amount.greaterThan(this.transferLimit)) {
             throw new BusinessException("Limit exceeded!");
         }
@@ -19,7 +18,7 @@ public class CheckingAccount extends Account {
         if (sum % 11 == 0) {
             checkingAccounts = new HashMap<>();
             checkingAccounts.put("acct1", this);
-            checkingAccounts.put("acct2",Accounts.findAcctByNumber(counterAccount)) ;
+            checkingAccounts.put("acct2", Accounts.findAcctByNumber(counterAccount));
             Transfer result = new Transfer(checkingAccounts, amount);
             return result;
         } else {
@@ -27,4 +26,3 @@ public class CheckingAccount extends Account {
         }
     }
 }
-// end::CheckingAccount[]

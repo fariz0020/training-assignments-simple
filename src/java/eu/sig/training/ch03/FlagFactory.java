@@ -10,7 +10,8 @@ import static eu.sig.training.ch03.Nationality.*;
 
 public class FlagFactory {
 
-    private static Map<Nationality, List<Color>> FLAGS = new HashMap<Nationality, List<Color>>() {};
+    private static Map<Nationality, List<Color>> FLAGS = new HashMap<Nationality, List<Color>>() {
+    };
 
     static {
         FLAGS.put(DUTCH, Arrays.asList(Color.RED, Color.WHITE, Color.BLUE));
@@ -25,11 +26,8 @@ public class FlagFactory {
         FLAGS.put(RUSSIA, Arrays.asList(Color.WHITE, Color.BLUE, Color.RED));
     }
 
-    // tag::getFlag[]
     public List<Color> getFlagColors(Nationality nationality) {
         List<Color> colors = FLAGS.get(nationality);
         return colors != null ? colors : Arrays.asList(Color.GRAY);
     }
-    // end::getFlag[]
-
 }

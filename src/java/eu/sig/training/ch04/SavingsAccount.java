@@ -3,7 +3,6 @@ package eu.sig.training.ch04;
 import java.util.HashMap;
 import java.util.Map;
 
-// tag::SavingsAccount[]
 public class SavingsAccount extends Account {
     private static final float INTEREST_PERCENTAGE = 0.04f;
     private Money balance = new Money();
@@ -15,7 +14,7 @@ public class SavingsAccount extends Account {
         if (sum % 11 == 0) {
             checkingAccounts = new HashMap<>();
             checkingAccounts.put("acct1", this);
-            checkingAccounts.put("acct2",Accounts.findAcctByNumber(counterAccount)) ;
+            checkingAccounts.put("acct2", Accounts.findAcctByNumber(counterAccount));
             Transfer result = new Transfer(checkingAccounts, amount);
             if (result.getCounterAccount().equals(this.registeredCounterAccount)) {
                 return result;
@@ -27,4 +26,3 @@ public class SavingsAccount extends Account {
         }
     }
 }
-// end::SavingsAccount[]

@@ -7,7 +7,6 @@ public class BuildAndSendMail {
 
     private Map<String, String> stringMap;
 
-    // tag::buildAndSendMail[]
     public void buildAndSendMail(MailMan m, Map<String, String> strings, MailFont font) {
         // Format the email address
         String mId = strings.get("firstName").charAt(0) + "." + strings.get("lastName").substring(0, 7) + "@"
@@ -21,7 +20,6 @@ public class BuildAndSendMail {
         stringMap.put("subject", strings.get("subject"));
         m.send(stringMap, mMessage);
     }
-    // end::buildAndSendMail[]
 
     @SuppressWarnings("unused")
     private MailMessage formatMessage(MailFont font, String string) {
