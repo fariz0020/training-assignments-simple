@@ -1,7 +1,9 @@
 package eu.sig.training.ch05.boardpanel;
 
 import java.awt.Graphics;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BoardPanel {
     @SuppressWarnings("unused")
@@ -9,31 +11,24 @@ public class BoardPanel {
     /**
      * Renders a single square on the given graphics context on the specified
      * rectangle.
-     * 
-     * @param square
-     *            The square to render.
+     *
      * @param g
      *            The graphics context to draw on.
-     * @param x
-     *            The x position to start drawing.
-     * @param y
-     *            The y position to start drawing.
-     * @param w
-     *            The width of this square (in pixels).
-     * @param h
-     *            The height of this square (in pixels).
+     * @param position
+     *            The position of drawing.
      */
-    private void render(Square square, Graphics g, int x, int y, int w, int h) {
-        square.getSprite().draw(g, x, y, w, h);
+    private void render(Graphics g, Map<String, Integer> position) {
+        Square square = new Square();
+        square.getSprite().draw(g, position);
         for (Unit unit : square.getOccupants()) {
-            unit.getSprite().draw(g, x, y, w, h);
+            unit.getSprite().draw(g, position);
         }
     }
     // end::render[]
 
     private class Sprite {
         @SuppressWarnings("unused")
-        public void draw(Graphics g, int x, int y, int w, int h) {
+        public void draw(Graphics g, Map<String, Integer> position) {
 
         }
     }
