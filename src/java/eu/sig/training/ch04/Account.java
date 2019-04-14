@@ -2,6 +2,9 @@ package eu.sig.training.ch04;
 
 public class Account {
 
+    private static final float INTEREST_PERCENTAGE = 0.0f;
+    private Money balance = new Money();
+
     protected Integer iterateCounterAccount(String counterAccount) {
         int sum = 0;
         for (int i = 0; i < counterAccount.length(); i++) {
@@ -13,5 +16,11 @@ public class Account {
     }
 
     public void addInterest() {
+        Money interest = balance.multiply(INTEREST_PERCENTAGE);
+        if (interest.greaterThan(0)) {
+            balance.add(interest);
+        } else {
+            balance.substract(interest);
+        }
     }
 }

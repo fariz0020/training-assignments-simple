@@ -26,15 +26,5 @@ public class CheckingAccount extends Account {
             throw new BusinessException("Invalid account number!");
         }
     }
-
-    @Override
-    public void addInterest() {
-        Money interest = balance.multiply(INTEREST_PERCENTAGE);
-        if (interest.greaterThan(0)) {
-            balance.add(interest);
-        } else {
-            balance.substract(interest);
-        }
-    }
 }
 // end::CheckingAccount[]
